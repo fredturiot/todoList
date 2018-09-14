@@ -97,6 +97,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Categorie.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Tache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
