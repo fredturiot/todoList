@@ -20,14 +20,14 @@ namespace todoList.Controllers
         // GET: api/Taches
         public IQueryable<Tache> GetTache()
         {
-            return db.Tache;
+            return db.Taches;
         }
 
         // GET: api/Taches/5
         [ResponseType(typeof(Tache))]
         public IHttpActionResult GetTache(int id)
         {
-            Tache tache = db.Tache.Find(id);
+            Tache tache = db.Taches.Find(id);
             if (tache == null)
             {
                 return NotFound();
@@ -68,7 +68,25 @@ namespace todoList.Controllers
                 }
             }
 
+
             return StatusCode(HttpStatusCode.NoContent);
+        }
+        // PUT: api/Taches STATUS
+        [ResponseType(typeof(void))]    
+        [Route("api/tacheStatut/{id}")]
+        [HttpPut]
+        public IHttpActionResult PutTacheStatus(int id, bool statut)
+        {
+            Tache tache = db.Taches.Find(id);
+            if (tache == null)
+            {
+                return NotFound();
+            }
+            tache.Statut = statut;
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.NoContent);
+
         }
 
         // POST: api/Taches
@@ -80,7 +98,7 @@ namespace todoList.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Tache.Add(tache);
+            db.Taches.Add(tache);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = tache.ID }, tache);
@@ -90,13 +108,13 @@ namespace todoList.Controllers
         [ResponseType(typeof(Tache))]
         public IHttpActionResult DeleteTache(int id)
         {
-            Tache tache = db.Tache.Find(id);
+            Tache tache = db.Taches.Find(id);
             if (tache == null)
             {
                 return NotFound();
             }
 
-            db.Tache.Remove(tache);
+            db.Taches.Remove(tache);
             db.SaveChanges();
 
             return Ok(tache);
@@ -113,7 +131,7 @@ namespace todoList.Controllers
 
         private bool TacheExists(int id)
         {
-            return db.Tache.Count(e => e.ID == id) > 0;
+            return db.Taches.Count(e => e.ID == id) > 0;
         }
     }
 }

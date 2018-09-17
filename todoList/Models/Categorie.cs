@@ -13,7 +13,7 @@ namespace todoList.Models
 
         [Required]
         [StringLength(20)]
-        [Column("Name")]
+        [Column("Nom")]
 		
 		public string Nom { get; set; }
 	}

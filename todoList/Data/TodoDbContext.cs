@@ -15,7 +15,7 @@ namespace todoList.Data
 
 		public DbSet<Categorie> Categories { get; set; }
 
-        public DbSet<Tache> Tache { get; set; }
+        public DbSet<Tache> Taches { get; set; }
 
 
 
